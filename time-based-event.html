@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      .main {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: #f0f0f0;
+      }
+      .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+      }
+      .first {
+        width: 100%;
+        height: 100%;
+        font-size: 3rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .second {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+      }
+      .item {
+        padding: 50px 0px;
+        width: 20%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      }
+      .item h3,
+      h4 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin: 10px 0;
+        padding: 20px 50px;
+      }
+      .item h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .item h4 {
+        font-size: 3rem;
+        font-weight: 600;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="center">
+        <div class="first">Time Left For New Year 2026</div>
+        <div class="second">
+          <div class="item">
+            <h3>Days</h3>
+            <h4 id="days">00</h4>
+          </div>
+          <div class="item">
+            <h3>Hours</h3>
+            <h4 id="hours">00</h4>
+          </div>
+          <div class="item">
+            <h3>Minutes</h3>
+            <h4 id="minutes">00</h4>
+          </div>
+          <div class="item">
+            <h3>Seconds</h3>
+            <h4 id="seconds">00</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var center = document.querySelector(".center");
+      var second = document.querySelector(".second");
+
+      var days = document.getElementById("days");
+      var hours = document.getElementById("hours");
+      var minutes = document.getElementById("minutes");
+      var seconds = document.getElementById("seconds");
+      var target_time = new Date(2026, 0);
+
+      setInterval(() => {
+        let currentTime = new Date();
+        let left = target_time - currentTime;
+        // console.log(left);
+
+        // Calculation For Days
+
+        let d = parseInt(Math.floor(left / (1000 * 60 * 60 * 24)));
+        days.innerHTML = d;
+
+        // Calculation For Hours
+
+        let h = parseInt((left % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        hours.innerHTML = h;
+
+        // Calculation For Minutes
+        let m = parseInt((left % (1000 * 60 * 60)) / (1000 * 60));
+
+        // Calculation For Seconds
+        minutes.innerHTML = m;
+        let s = parseInt((left % (1000 * 60)) / 1000);
+        seconds.innerHTML = s;
+      });
+    </script>
+  </body>
+</html>
